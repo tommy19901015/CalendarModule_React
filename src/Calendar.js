@@ -87,14 +87,17 @@ class Calendar extends Component {
     renderContent = (days) => {
         if(!days.empty && this.state.jsonData.length != 0){
            let date = days.year + "/" + days.month + "/" + ((days.day) < 10 ? '0' + days.day : days.day);
-           let test = this.state.jsonData.filter(obj => obj.date === date);
-           console.log(test)
-           return ([
-               <div>{test.status}</div>,
-               <div>{test.availableVancancy}</div>,
-               <div>test.totalVacnacy</div>,
-               <div>test.price</div>
-           ])
+           let info = this.state.jsonData.filter(obj => obj.date === date);
+           console.log(info)
+           if(info.length != 0){
+            return ([
+                // <div>{info[0].date}</div>,
+                <div>{info[0].status}</div>,
+                <div>可賣 : {info[0].availableVancancy}</div>,
+                <div>團位 : {info[0].totalVacnacy}</div>,
+                <div>${info[0].price}</div>
+            ])
+           }
         }
     }
     render() {
