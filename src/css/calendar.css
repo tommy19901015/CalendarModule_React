@@ -1,0 +1,84 @@
+body {
+  font-family: Microsoft JhengHei;
+  font-size: 14px;
+}
+
+body .main_container {
+  width: 460px;
+}
+
+body .main_container .changeMonthBlock {
+  background-color: #ede9dd;
+  width: 100%;
+}
+
+body .main_container .changeMonthBlock .monthBlock {
+  width: calc((100% - 40px) / 3);
+  display: inline-block;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+body .main_container .changeMonthBlock .monthBlock.active {
+  color: red;
+  background-color: #FFF;
+  margin-top: 3px;
+}
+
+body .main_container .changeMonthBlock .pre, body .main_container .changeMonthBlock .next {
+  color: red;
+  cursor: pointer;
+  width: 20px;
+  float: left;
+  cursor: pointer;
+  line-height: 48px;
+  text-align: center;
+}
+
+body .main_container .changeMonthBlock .next {
+  float: right;
+}
+
+body .main_container .div_table {
+  display: table;
+  width: 100%;
+  border-right: 1px solid #f4f4f4;
+  border-bottom: 1px solid #f4f4f4;
+}
+
+body .main_container .div_table .div_tr {
+  display: table-row;
+}
+
+body .main_container .div_table .div_tr .div_td {
+  display: table-cell;
+  border-left: 1px solid #f4f4f4;
+  border-top: 1px solid #f4f4f4;
+  height: 85px;
+  width: 64px;
+  padding: 0 3px;
+  font-size: 12px;
+  line-height: 16px;
+  cursor: pointer;
+}
+
+body .main_container .div_table .div_tr .div_td.weekText {
+  cursor: default;
+  text-align: center;
+  border-left: none;
+  height: 30px;
+  line-height: 30px;
+}
+
+body .main_container .div_table .div_tr .div_td.weekText:first-child {
+  border-left: 1px solid #f4f4f4;
+}
+
+body .main_container .div_table .div_tr .div_td.noDay {
+  background-color: #f8f8f8;
+  cursor: default;
+}
+/*# sourceMappingURL=calendar.css.map */
