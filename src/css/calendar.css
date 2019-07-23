@@ -3,6 +3,18 @@ body {
   font-size: 14px;
 }
 
+body .changeBtn {
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 10px;
+  background: #fe8400;
+  color: #FFF;
+  width: 120px;
+  text-align: center;
+  line-height: 35px;
+  border-radius: 4px;
+}
+
 body .main_container {
   width: 460px;
 }
@@ -59,10 +71,14 @@ body .main_container .div_table .div_tr .div_td {
   border-top: 1px solid #f4f4f4;
   height: 85px;
   width: 64px;
-  padding: 0 3px;
   font-size: 12px;
   line-height: 16px;
+  position: relative;
   cursor: pointer;
+}
+
+body .main_container .div_table .div_tr .div_td:hover {
+  background-color: #fff9e3;
 }
 
 body .main_container .div_table .div_tr .div_td.weekText {
@@ -80,5 +96,126 @@ body .main_container .div_table .div_tr .div_td.weekText:first-child {
 body .main_container .div_table .div_tr .div_td.noDay {
   background-color: #f8f8f8;
   cursor: default;
+}
+
+body .main_container .div_table .div_tr .div_td .right_block .dayText {
+  padding: 0;
+}
+
+body .main_container .div_table .div_tr .div_td .right_block .week_ch {
+  display: none;
+}
+
+body .main_container .div_table .div_tr .div_td .content .status {
+  color: #999;
+}
+
+body .main_container .div_table .div_tr .div_td .content .status.o {
+  color: #ff7800;
+}
+
+body .main_container .div_table .div_tr .div_td .content .status.g {
+  color: #1c9c9d;
+}
+
+body .main_container .div_table .div_tr .div_td .content .availableVancancy, body .main_container .div_table .div_tr .div_td .content .totalVacnacy {
+  color: #666;
+}
+
+body .main_container .div_table .div_tr .div_td .content .price {
+  color: #e10500;
+}
+
+body .main_container .div_table .div_tr .div_td .content .guaranteed {
+  position: absolute;
+  top: 0;
+  right: 1px;
+  padding: 0 3px;
+  width: 30px;
+  height: 20px;
+  color: #fff;
+  text-align: center;
+  line-height: 20px;
+  background-color: #fe8400;
+}
+
+body .main_container .div_table .div_tr .div_td .content .guaranteed .no {
+  display: none;
+}
+
+body .main_container .div_table.selectList {
+  display: inline-block;
+}
+
+body .main_container .div_table.selectList .div_tr {
+  display: initial;
+}
+
+body .main_container .div_table.selectList .div_tr.weekBlock {
+  display: none;
+}
+
+body .main_container .div_table.selectList .div_tr .div_td {
+  width: 100%;
+  height: 60px;
+  display: block;
+}
+
+body .main_container .div_table.selectList .div_tr .div_td.noGroup, body .main_container .div_table.selectList .div_tr .div_td.noDay {
+  display: none;
+}
+
+body .main_container .div_table.selectList .div_tr .div_td .right_block {
+  color: #666;
+  text-align: center;
+  font-size: 24px;
+  float: left;
+  padding: 4px;
+}
+
+body .main_container .div_table.selectList .div_tr .div_td .right_block .dayText {
+  padding: 10px 0 10px;
+}
+
+body .main_container .div_table.selectList .div_tr .div_td .right_block .week_ch {
+  display: block;
+  font-size: 14px;
+}
+
+body .main_container .div_table.selectList .div_tr .div_td .content {
+  display: inline-block;
+}
+
+body .main_container .div_table.selectList .div_tr .div_td .content .status {
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  font-size: 14px;
+}
+
+body .main_container .div_table.selectList .div_tr .div_td .content .availableVancancy {
+  position: absolute;
+  top: 10px;
+  left: 55px;
+}
+
+body .main_container .div_table.selectList .div_tr .div_td .content .totalVacnacy {
+  position: absolute;
+  right: 280px;
+  top: 10px;
+}
+
+body .main_container .div_table.selectList .div_tr .div_td .content .price {
+  position: absolute;
+  right: 5px;
+  bottom: 10px;
+  font-size: 14px;
+}
+
+body .main_container .div_table.selectList .div_tr .div_td .content .guaranteed {
+  border-radius: 2px;
+  top: 35px;
+  right: initial;
+  left: 55px;
 }
 /*# sourceMappingURL=calendar.css.map */

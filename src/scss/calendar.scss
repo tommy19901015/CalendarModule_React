@@ -1,6 +1,17 @@
 body {
     font-family: Microsoft JhengHei;
     font-size: 14px;
+    .changeBtn{
+      cursor: pointer;
+      font-size: 16px;
+      margin-bottom: 10px;
+      background: #fe8400;
+      color: #FFF;
+      width: 120px;
+      text-align: center;
+      line-height: 35px;
+      border-radius:4px;
+    }
     .main_container {
       width: 460px;
       .changeMonthBlock{
@@ -37,7 +48,7 @@ body {
           display: table;
           width: 100%;
           border-right: 1px solid #f4f4f4;
-          border-bottom: 1px solid #f4f4f4; 
+          border-bottom: 1px solid #f4f4f4;
           .div_tr{
             display: table-row;
               .div_td{
@@ -46,10 +57,16 @@ body {
                 border-top: 1px solid #f4f4f4;
                 height: 85px;
                 width: 64px;
-                padding: 0 3px;
                 font-size: 12px;
                 line-height: 16px;
+                position: relative;
                 cursor: pointer;
+                &:hover{
+                  background-color: #fff9e3;
+                }
+                // &.hasData{
+                //   background-color: #e10500;
+                // }
                 &.weekText{
                   cursor: default;
                   text-align: center;
@@ -64,7 +81,110 @@ body {
                   background-color: #f8f8f8;
                   cursor: default; 
                 }
+                .right_block{
+                  .dayText{
+                    padding: 0;
+                  }
+                  .week_ch{
+                    display: none;
+                  }
+                }
+                .content{
+                  .status{
+                    color:#999;
+                    &.o{
+                      color : #ff7800;    
+                    }
+                    &.g{
+                      color : #1c9c9d;    
+                    }
+                  }
+                  .availableVancancy,.totalVacnacy{
+                    color:#666;
+                  }
+                  .price{
+                    color:#e10500;
+                  }
+                  .guaranteed{
+                    position: absolute;
+                    top: 0;
+                    right: 1px;
+                    padding: 0 3px;
+                    width: 30px;
+                    height: 20px;
+                    color: #fff;
+                    text-align: center;
+                    line-height: 20px;
+                    background-color: #fe8400;
+                    .no{
+                      display: none;
+                    }
+                  }
+                }
               }
+          }
+          &.selectList{
+            display: inline-block;
+            // @import 'selectList';
+            .div_tr{
+              display: initial;
+              &.weekBlock {
+                display: none;
+              }
+              .div_td{
+                width: 100%;
+                height: 60px;
+                display: block;
+                &.noGroup, &.noDay{
+                  display: none;
+                }
+                .right_block{
+                  color: #666;
+                  text-align: center;
+                  font-size: 24px;
+                  float: left;
+                  padding:4px;
+                  .dayText{
+                    padding: 10px 0 10px;
+                  }
+                  .week_ch{
+                    display: block;
+                    font-size: 14px;
+                  }
+                }
+                .content{
+                  display: inline-block;
+                  .status{
+                    position: absolute;
+                    right: 5px;
+                    top: 10px;
+                    font-size: 14px
+                  }
+                  .availableVancancy{
+                    position: absolute;
+                    top: 10px;
+                    left: 55px;
+                  }
+                  .totalVacnacy{
+                    position: absolute;
+                    right: 280px;
+                    top: 10px;
+                  }
+                  .price{
+                    position: absolute;
+                    right: 5px;
+                    bottom: 10px;
+                    font-size: 14px;
+                  }
+                  .guaranteed{
+                    border-radius: 2px;
+                    top: 35px;
+                    right: initial;
+                    left: 55px;
+                  }
+                }
+              }  
+            }
           }
       }
     }

@@ -1,0 +1,12 @@
+.div_tr {
+  display: table-row;
+}
+
+.div_tr.weekBlock {
+  display: none;
+}
+
+.div_tr:first-child {
+  display: none;
+}
+/*# sourceMappingURL=selectList.css.map */

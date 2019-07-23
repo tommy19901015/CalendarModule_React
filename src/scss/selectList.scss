@@ -1,0 +1,67 @@
+.div_tr{
+    display: table-row;
+    &.weekBlock {
+        display: none;
+    }
+    &:first-child{
+        display: none;
+    }
+    //   .div_td{
+    //     display: table-cell;
+    //     border-left: 1px solid #f4f4f4;
+    //     border-top: 1px solid #f4f4f4;
+    //     height: 85px;
+    //     width: 64px;
+    //     padding: 0 3px;
+    //     font-size: 12px;
+    //     line-height: 16px;
+    //     position: relative;
+    //     cursor: pointer;
+    //     &.weekText{
+    //       cursor: default;
+    //       text-align: center;
+    //       border-left: none;
+    //       height: 30px;
+    //       line-height: 30px;
+    //       &:first-child{
+    //         border-left: 1px solid #f4f4f4;
+    //       } 
+    //     }
+    //     &.noDay{
+    //       background-color: #f8f8f8;
+    //       cursor: default; 
+    //     }
+    //     .content{
+    //       .status{
+    //         color:#999;
+    //         &.o{
+    //           color : #ff7800;    
+    //         }
+    //         &.g{
+    //           color : #1c9c9d;    
+    //         }
+    //       }
+    //       .availableVancancy,.totalVacnacy{
+    //         color:#666;
+    //       }
+    //       .price{
+    //         color:#e10500;
+    //       }
+    //     }
+    //     .guaranteed{
+    //       position: absolute;
+    //       top: 0;
+    //       right: -1px;
+    //       padding: 0 3px;
+    //       width: 30px;
+    //       height: 20px;
+    //       color: #fff;
+    //       text-align: center;
+    //       line-height: 20px;
+    //       background-color: #fe8400;
+    //       .no{
+    //         display: none;
+    //       }
+    //     }
+    //   }
+  }
