@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import Moment from 'moment';
 import "./css/calendar.css";
 import axios from "axios";
+import propTypes from 'prop-types';
 
 class Calendar extends Component {
     state = {
-        // initDate : Moment().format("YYYY/MM/DD"),
-        initDate : Moment().format("2018/12/06"),
+        initDate : Moment().format("YYYY/MM/DD"),
+        // initDate : Moment().format("2018/12/06"),
         weekText : [{text:"星期日",en:"Sunday"},{text:"星期一",en:"Monday"},{text:"星期二",en:"Tuesday"},{text:"星期三",en:"Wednesday"},{text:"星期四",en:"Thursday"},{text:"星期五",en:"Friday"},{text:"星期六",en:"Saturday"}],
         weekToatalDay : 7,
         tableGrid : 35,
@@ -16,7 +17,8 @@ class Calendar extends Component {
     }
     componentDidMount = () => {
         this.getJsonData()
-        .then(this.sortJsonData)      
+        .then(this.sortJsonData)
+        .then(this.getRecentJsonData)   
     }
     getJsonData = () => {
         return axios.get(this.state.jsonUrl)
@@ -34,12 +36,48 @@ class Calendar extends Component {
                 delete o["total"];
                 o["status"] = o["state"];
                 delete o["state"];
-                return o
             }
             return o    
         })
         this.setState({jsonData:newRes})
         return newRes
+    }
+    getRecentJsonData = () => {
+        // moment("not a real date").isValid(); // false
+        const inputDate = (typeof(this.props.date) != "undefined") ? this.props.date : Moment().format("YYYY/MM/DD");
+        const recentDay = this.state.jsonData.map(o=>Math.abs(Moment(inputDate).diff(o.date, 'days')));
+        const min = Math.min(...recentDay);
+        const idxArr = recentDay.map((o,i)=>o===min?i:'').filter(k=>k!=='');
+        let max = 0;
+        let mode = null;
+        let mostRepeated = idxArr.map(i=>this.state.jsonData[i]).reduce((acc, curr) => { 
+            (curr.date in acc) ? acc[curr.date]++ : acc[curr.date] = 1
+            if (max < acc[curr.date]) {
+                max = acc[curr.date];
+                mode = curr.date;
+            }
+            return acc;
+        }, {});
+        let mostRepeatedDate = Object.keys(mostRepeated).reduce((a, b) => mostRepeated[a] > mostRepeated[b] ? a : b);
+        // console.log(mostRepeatedDate)
+        console.log(recentDay)
+
+        this.setState({initDate: this.state.jsonData[idxArr[0]].date});
+        
+
+
+
+        //2.吃資料輸入 -> if手動輸入資料 null -> 比對json資料取最近一筆
+
+        // }
+        //header 的 click
+        //當月份後都沒資料時給尚無資料
+        //data render完顯示第一筆css
+        //props 可以吃array或url
+        
+        //有指定日期 > 沒有資料 > 找相近的月份當資料   如果月數前後天數一樣找資料多的
+        //無指定日期 > 沒有資料 > 拿最近的月份當資料
+
     }
     renderTitle = () => {
         const now = Moment(this.state.initDate).format("YYYY MM月");
@@ -56,17 +94,16 @@ class Calendar extends Component {
                 <div className="pre">{'◀'}</div>
                 <div onClick={this.ckickMothTitle} data-info={preDataInfo + '/01'} className={this.activeTitle(preDataInfo + '/01')}>{pre}</div>
                 <div onClick={this.ckickMothTitle} data-info={nowDataInfo + '/01'} className={this.activeTitle(nowDataInfo + '/01')}>{now}</div>
-                <div onClick={this.ckickMothTitle} data-info={next2DataInfo + '/01'} className={this.activeTitle(nextDataInfo + '/01')}>{next}</div>
+                <div onClick={this.ckickMothTitle} data-info={nextDataInfo + '/01'} className={this.activeTitle(nextDataInfo + '/01')}>{next}</div>
                 <div className="next">{'▶'}</div>
             </div> 
         )
     }
     ckickMothTitle = e => {
-        console.log(e.currentTarget.dataset.info.split('/',2).join(''))
-        this.state.jsonData.map(o=>{
-            // console.log(o.date.split('/',2).join(''))
-        })
-
+        // console.log(e.currentTarget.dataset.info.split('/',2).join(''))
+        // this.state.jsonData.map(o=>
+        //     o.date.split('/',2).join('') === e.currentTarget.dataset.info.split('/',2).join('')).length === 0 ?
+        //     '' : this.setState({initDate:e.currentTarget.dataset.info})
         this.setState({initDate:e.currentTarget.dataset.info})
     }
     activeTitle = (title) => {
@@ -110,10 +147,10 @@ class Calendar extends Component {
                 </div>)}</div>)
     }
     renderContent = (days) => {
-        if(!days.empty && this.state.jsonData.length != 0){
+        if(!days.empty && this.state.jsonData.length !== 0){
            let date = days.year + "/" + days.month + "/" + ((days.day) < 10 ? '0' + days.day : days.day);
            let info = this.state.jsonData.filter(obj => obj.date === date);
-           if(info.length != 0){
+           if(info.length !== 0){
             return ([
                 <div className={info[0].guaranteed ? 'guaranteed' : 'guaranteed no'} key={'guaranteed'}>成團</div>,
                 <div className={this.statusStyle(info[0].status)} key={'status'}>{info[0].status}</div>,
@@ -171,3 +208,7 @@ class Calendar extends Component {
 }
 
 export default Calendar;
+
+Calendar.propTypes = {
+    date :  propTypes.string 
+}

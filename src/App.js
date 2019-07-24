@@ -5,7 +5,8 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Calendar />    
+                {/* <Calendar /> */}
+                <Calendar date={'2018/12/25'}/>    
             </div>
         );
     }
