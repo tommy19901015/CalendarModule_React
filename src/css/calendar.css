@@ -81,8 +81,17 @@ body .main_container .div_table .div_tr .div_td {
   cursor: pointer;
 }
 
+body .main_container .div_table .div_tr .div_td.active {
+  border: 2px solid #66bb3c;
+  background-color: #fff9e3;
+}
+
 body .main_container .div_table .div_tr .div_td:hover {
   background-color: #fff9e3;
+}
+
+body .main_container .div_table .div_tr .div_td.first {
+  background-color: #e10500;
 }
 
 body .main_container .div_table .div_tr .div_td.weekText {
@@ -133,7 +142,7 @@ body .main_container .div_table .div_tr .div_td .content .price {
 body .main_container .div_table .div_tr .div_td .content .guaranteed {
   position: absolute;
   top: 0;
-  right: 1px;
+  right: 0;
   padding: 0 3px;
   width: 30px;
   height: 20px;

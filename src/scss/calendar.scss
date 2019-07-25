@@ -64,12 +64,20 @@ body {
                 line-height: 16px;
                 position: relative;
                 cursor: pointer;
+                &.active { 
+                  border: 2px solid #66bb3c;
+                  background-color: #fff9e3;
+                }
+                // &:active { 
+                //   border: 2px solid #66bb3c;
+                //   background-color: #fff9e3;
+                // }
                 &:hover{
                   background-color: #fff9e3;
                 }
-                // &.hasData{
-                //   background-color: #e10500;
-                // }
+                &.first{
+                  background-color: #e10500
+                }
                 &.weekText{
                   cursor: default;
                   text-align: center;
@@ -111,7 +119,7 @@ body {
                   .guaranteed{
                     position: absolute;
                     top: 0;
-                    right: 1px;
+                    right: 0;
                     padding: 0 3px;
                     width: 30px;
                     height: 20px;

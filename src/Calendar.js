@@ -14,7 +14,9 @@ class Calendar extends Component {
         jsonData : [],
         isSelectList : true,
         inDateRange:true,
-        isErrorUrl:false
+        isErrorUrl:false,
+        td_active:false
+
     }
     componentDidMount = () => {        
         this.getJsonData()
@@ -82,8 +84,6 @@ class Calendar extends Component {
             }else{
                 console.log('error date format (YYYY/MM/DD)')
             }
-            
-            
         }else{
             console.log('error url')
         }
@@ -150,7 +150,8 @@ class Calendar extends Component {
             }
         }
         return monthDataArr.map((obj,i) => <div key={i} className="div_tr">{obj.map((days,j)=>
-                <div key={j} className={days.empty ? 'div_td noDay noGroup' : this.renderContent(days) ? 'div_td hasData' : 'div_td noGroup'}>
+                <div onClick={this.clickDay} key={j} className={days.empty ? 'div_td noDay noGroup' : this.renderContent(days) ? 
+                (this.state.td_active) ? 'div_td hasData active' : 'div_td hasData' : 'div_td noGroup'}>
                     <div className="right_block">
                         <div className="dayText">{days.empty ? '' : days.day}</div>
                         <div className="week_ch">{days.week_ch}</div>
@@ -158,6 +159,14 @@ class Calendar extends Component {
                     <div className="content">{this.renderContent(days)}</div>
                 </div>)}</div>)
     }
+    clickDay = (e) => {
+        console.log(this)
+        if(e.currentTarget.classList.contains('hasData')){
+            this.setState({td_active : !this.state.td_active})
+            console.log(this.state.td_active)
+        }
+    }
+
     renderContent = (days) => {
         if(!days.empty && this.state.jsonData.length !== 0){
            let date = days.year + "/" + days.month + "/" + ((days.day) < 10 ? '0' + days.day : days.day);
