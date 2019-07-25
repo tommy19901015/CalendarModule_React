@@ -18,7 +18,7 @@ body {
         background-color:  #ede9dd;
         width: 100%;
         .monthBlock{
-          width: calc((100% - 40px) / 3);
+          width: calc(100% / 3);
           display: inline-block;
           text-align: center;
           height: 45px;
@@ -49,6 +49,9 @@ body {
           width: 100%;
           border-right: 1px solid #f4f4f4;
           border-bottom: 1px solid #f4f4f4;
+          .noTravel{
+            display: none
+          }
           .div_tr{
             display: table-row;
               .div_td{
@@ -126,6 +129,12 @@ body {
           &.selectList{
             display: inline-block;
             // @import 'selectList';
+            .noTravel{
+              display: block;
+              text-align: center;
+              font-size: 16px;
+              padding: 15px;
+            }
             .div_tr{
               display: initial;
               &.weekBlock {

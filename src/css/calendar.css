@@ -25,7 +25,7 @@ body .main_container .changeMonthBlock {
 }
 
 body .main_container .changeMonthBlock .monthBlock {
-  width: calc((100% - 40px) / 3);
+  width: calc(100% / 3);
   display: inline-block;
   text-align: center;
   height: 45px;
@@ -59,6 +59,10 @@ body .main_container .div_table {
   width: 100%;
   border-right: 1px solid #f4f4f4;
   border-bottom: 1px solid #f4f4f4;
+}
+
+body .main_container .div_table .noTravel {
+  display: none;
 }
 
 body .main_container .div_table .div_tr {
@@ -145,6 +149,13 @@ body .main_container .div_table .div_tr .div_td .content .guaranteed .no {
 
 body .main_container .div_table.selectList {
   display: inline-block;
+}
+
+body .main_container .div_table.selectList .noTravel {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  padding: 15px;
 }
 
 body .main_container .div_table.selectList .div_tr {
