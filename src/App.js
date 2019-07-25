@@ -23,7 +23,7 @@ class App extends Component {
         return (
             <div className="App">
                 {/* <Calendar /> */}
-                <Calendar jsonData={'/json/data1.json'} />
+                <Calendar date={'2011/11/02'} jsonData={'/json/data1.json'} />
                 {/* <Calendar date={'2020/5/25'} jsonData={jsonData} /> */}
                 {/* <Calendar date={'2020/5/25'} jsonData={{}} />   */}
             </div>

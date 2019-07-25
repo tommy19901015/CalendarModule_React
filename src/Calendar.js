@@ -60,23 +60,30 @@ class Calendar extends Component {
     getRecentJsonData = () => {
         if(!this.state.isErrorUrl){
             const inputDate = (typeof(this.props.date) != "undefined") ? this.props.date : Moment().format("YYYY/MM/DD");
-            const recentDay = this.state.jsonData.map(o=>Math.abs(Moment(inputDate).diff(o.date, 'days')));
-            const min = Math.min(...recentDay);
-            const idxArr = recentDay.map((o,i)=>o===min?i:'').filter(k=>k!=='');
-            let max = 0;
-            let mode = null;
-            let mostRepeated = idxArr.map(i=>this.state.jsonData[i]).reduce((acc, curr) => { 
-                (curr.date in acc) ? acc[curr.date]++ : acc[curr.date] = 1
-                if (max < acc[curr.date]) {
-                    max = acc[curr.date];
-                    mode = curr.date;
-                }
-                return acc;
-            }, {});
-            let mostRepeatedDate = Object.keys(mostRepeated).reduce((a, b) => mostRepeated[a] >= mostRepeated[b] ? a : b);
-            let mostRepeatedDateIdx = idxArr.filter(i=> this.state.jsonData[i].date === mostRepeatedDate ? i : '')[0];    
-            (typeof(mostRepeatedDateIdx) === 'undefined') ? mostRepeatedDateIdx = 0 : mostRepeatedDateIdx = mostRepeatedDateIdx;
-            this.setState({initDate: this.state.jsonData[mostRepeatedDateIdx].date});
+            let regEx = /^\d{4}(\/)(((0)[0-9])|((1)[0-2]))(\/)([0-2][0-9]|(3)[0-1])$/;
+            if(this.props.date.match(regEx) != null){
+                const recentDay = this.state.jsonData.map(o=>Math.abs(Moment(inputDate).diff(o.date, 'days')));
+                const min = Math.min(...recentDay);
+                const idxArr = recentDay.map((o,i)=>o===min?i:'').filter(k=>k!=='');
+                let max = 0;
+                let mode = null;
+                let mostRepeated = idxArr.map(i=>this.state.jsonData[i]).reduce((acc, curr) => { 
+                    (curr.date in acc) ? acc[curr.date]++ : acc[curr.date] = 1
+                    if (max < acc[curr.date]) {
+                        max = acc[curr.date];
+                        mode = curr.date;
+                    }
+                    return acc;
+                }, {});
+                let mostRepeatedDate = Object.keys(mostRepeated).reduce((a, b) => mostRepeated[a] >= mostRepeated[b] ? a : b);
+                let mostRepeatedDateIdx = idxArr.filter(i=> this.state.jsonData[i].date === mostRepeatedDate ? i : '')[0];    
+                (typeof(mostRepeatedDateIdx) === 'undefined') ? mostRepeatedDateIdx = 0 : mostRepeatedDateIdx = mostRepeatedDateIdx;
+                this.setState({initDate: this.state.jsonData[mostRepeatedDateIdx].date});
+            }else{
+                console.log('error date format (YYYY/MM/DD)')
+            }
+            
+            
         }else{
             console.log('error url')
         }
